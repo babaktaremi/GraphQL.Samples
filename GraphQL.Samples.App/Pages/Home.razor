@@ -1,0 +1,63 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+
+<UseGetProductsListQuery Context="result" After="@_after" Before="@_before" First="@_first" Last="@_last">
+    <ChildContent >
+        <div class="container mt-5">
+            <div class="row">
+
+                @if (result.Products?.Edges is not null)
+                {
+                    foreach (var productsNode in result.Products.Edges)
+                    {
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="data:image/png;base64,@productsNode.Node.ThumbnailBase64Image" class="img-thumbnail" alt="@productsNode.Node.Name">
+                                <div class="card-body">
+                                    <h5 class="card-title">@productsNode.Node.Name</h5>
+                                    <a href="/ProductsDetail/@productsNode.Node.ProductId" class="btn btn-primary">Show Info</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12 d-flex justify-content-between">
+                    <button class="btn btn-secondary" @onclick="()=>GoToPreviousPage(result)">Previous Page</button>
+                    <button class="btn btn-secondary" @onclick="() => GoToNextPage(result)">Next Page</button>
+                </div>
+            </div>
+        </div>
+
+    </ChildContent>
+    <LoadingContent>
+        Loading...
+    </LoadingContent>
+</UseGetProductsListQuery>
+
+@code
+{
+    private string? _after = null;
+    private string? _before = null;
+    private int? _first=20;
+    private int? _last;
+
+    private void GoToPreviousPage(IGetProductsListQueryResult result)
+    {
+        _after =null; 
+        _before=result.Products?.PageInfo.StartCursor;
+        _first=null;
+        _last=20;
+    }
+
+    private void GoToNextPage(IGetProductsListQueryResult result)
+    {
+        _after = result.Products?.PageInfo.EndCursor;
+        _before=null;
+        _first=20;
+        _last=null;
+    }
+}

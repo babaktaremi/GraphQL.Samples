@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQL.Samples.Api", "GraphQL.Samples.Api\GraphQL.Samples.Api.csproj", "{AA1927F1-88C2-4955-83F6-DD2ECF2BCED8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQL.Samples.App", "GraphQL.Samples.App\GraphQL.Samples.App.csproj", "{132B93B8-3D20-4E7B-8972-C9329D9E2F9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA1927F1-88C2-4955-83F6-DD2ECF2BCED8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA1927F1-88C2-4955-83F6-DD2ECF2BCED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA1927F1-88C2-4955-83F6-DD2ECF2BCED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA1927F1-88C2-4955-83F6-DD2ECF2BCED8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{132B93B8-3D20-4E7B-8972-C9329D9E2F9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{132B93B8-3D20-4E7B-8972-C9329D9E2F9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{132B93B8-3D20-4E7B-8972-C9329D9E2F9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{132B93B8-3D20-4E7B-8972-C9329D9E2F9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

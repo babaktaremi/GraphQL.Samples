@@ -1,0 +1,215 @@
+schema {
+  query: ProductsQuery
+}
+
+type ProductsQuery {
+  products("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String "Returns the last _n_ elements from the list." last: Int "Returns the elements in the list that come before the specified cursor." before: String where: ProductFilterInput order: [ProductSortInput!]): ProductsConnection
+  singleProduct(productId: Int! where: ProductFilterInput): Product
+}
+
+input ProductFilterInput {
+  and: [ProductFilterInput!]
+  or: [ProductFilterInput!]
+  productId: IntOperationFilterInput
+  name: StringOperationFilterInput
+  productNumber: StringOperationFilterInput
+  color: StringOperationFilterInput
+  standardCost: DecimalOperationFilterInput
+  listPrice: DecimalOperationFilterInput
+  size: StringOperationFilterInput
+  weight: DecimalOperationFilterInput
+  productCategoryId: IntOperationFilterInput
+  productModelId: IntOperationFilterInput
+  sellStartDate: DateTimeOperationFilterInput
+  sellEndDate: DateTimeOperationFilterInput
+  discontinuedDate: DateTimeOperationFilterInput
+  thumbNailPhoto: ListByteOperationFilterInput
+  thumbnailPhotoFileName: StringOperationFilterInput
+  rowguid: UuidOperationFilterInput
+  modifiedDate: DateTimeOperationFilterInput
+  thumbnailBase64Image: StringOperationFilterInput
+}
+
+input ProductSortInput {
+  productId: SortEnumType
+  name: SortEnumType
+  productNumber: SortEnumType
+  color: SortEnumType
+  standardCost: SortEnumType
+  listPrice: SortEnumType
+  size: SortEnumType
+  weight: SortEnumType
+  productCategoryId: SortEnumType
+  productModelId: SortEnumType
+  sellStartDate: SortEnumType
+  sellEndDate: SortEnumType
+  discontinuedDate: SortEnumType
+  thumbnailPhotoFileName: SortEnumType
+  rowguid: SortEnumType
+  modifiedDate: SortEnumType
+  thumbnailBase64Image: SortEnumType
+}
+
+"A connection to a list of items."
+type ProductsConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo!
+  "A list of edges."
+  edges: [ProductsEdge!]
+  "A flattened list of the nodes."
+  nodes: [Product!]
+}
+
+input IntOperationFilterInput {
+  eq: Int
+  neq: Int
+  in: [Int]
+  nin: [Int]
+  gt: Int
+  ngt: Int
+  gte: Int
+  ngte: Int
+  lt: Int
+  nlt: Int
+  lte: Int
+  nlte: Int
+}
+
+input StringOperationFilterInput {
+  and: [StringOperationFilterInput!]
+  or: [StringOperationFilterInput!]
+  eq: String
+  neq: String
+  contains: String
+  ncontains: String
+  in: [String]
+  nin: [String]
+  startsWith: String
+  nstartsWith: String
+  endsWith: String
+  nendsWith: String
+}
+
+input DecimalOperationFilterInput {
+  eq: Decimal
+  neq: Decimal
+  in: [Decimal]
+  nin: [Decimal]
+  gt: Decimal
+  ngt: Decimal
+  gte: Decimal
+  ngte: Decimal
+  lt: Decimal
+  nlt: Decimal
+  lte: Decimal
+  nlte: Decimal
+}
+
+input DateTimeOperationFilterInput {
+  eq: DateTime
+  neq: DateTime
+  in: [DateTime]
+  nin: [DateTime]
+  gt: DateTime
+  ngt: DateTime
+  gte: DateTime
+  ngte: DateTime
+  lt: DateTime
+  nlt: DateTime
+  lte: DateTime
+  nlte: DateTime
+}
+
+input ListByteOperationFilterInput {
+  all: ByteOperationFilterInput
+  none: ByteOperationFilterInput
+  some: ByteOperationFilterInput
+  any: Boolean
+}
+
+input UuidOperationFilterInput {
+  eq: UUID
+  neq: UUID
+  in: [UUID]
+  nin: [UUID]
+  gt: UUID
+  ngt: UUID
+  gte: UUID
+  ngte: UUID
+  lt: UUID
+  nlt: UUID
+  lte: UUID
+  nlte: UUID
+}
+
+enum SortEnumType {
+  ASC
+  DESC
+}
+
+"Information about pagination in a connection."
+type PageInfo {
+  "Indicates whether more edges exist following the set defined by the clients arguments."
+  hasNextPage: Boolean!
+  "Indicates whether more edges exist prior the set defined by the clients arguments."
+  hasPreviousPage: Boolean!
+  "When paginating backwards, the cursor to continue."
+  startCursor: String
+  "When paginating forwards, the cursor to continue."
+  endCursor: String
+}
+
+type Product {
+  productId: Int!
+  name: String!
+  productNumber: String!
+  color: String
+  standardCost: Decimal!
+  listPrice: Decimal!
+  size: String
+  weight: Decimal
+  productCategoryId: Int
+  productModelId: Int
+  sellStartDate: DateTime!
+  sellEndDate: DateTime
+  discontinuedDate: DateTime
+  thumbNailPhoto: [Byte!]
+  thumbnailPhotoFileName: String
+  rowguid: UUID!
+  modifiedDate: DateTime!
+  thumbnailBase64Image: String!
+}
+
+"An edge in a connection."
+type ProductsEdge {
+  "A cursor for use in pagination."
+  cursor: String!
+  "The item at the end of the edge."
+  node: Product!
+}
+
+"The built-in `Decimal` scalar type."
+scalar Decimal
+
+"The `DateTime` scalar represents an ISO-8601 compliant date time type."
+scalar DateTime
+
+input ByteOperationFilterInput {
+  eq: Byte
+  neq: Byte
+  in: [Byte]
+  nin: [Byte]
+  gt: Byte
+  ngt: Byte
+  gte: Byte
+  ngte: Byte
+  lt: Byte
+  nlt: Byte
+  lte: Byte
+  nlte: Byte
+}
+
+scalar UUID
+
+"The `Byte` scalar type represents non-fractional whole numeric values. Byte can represent values between 0 and 255."
+scalar Byte

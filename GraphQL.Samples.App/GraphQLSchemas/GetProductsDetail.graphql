@@ -1,0 +1,35 @@
+﻿query ProductsDetailQuery($ProductId: Int!) {
+    singleProduct(productId: $ProductId) {
+        color
+        listPrice
+        modifiedDate
+        name
+        productId
+        productNumber
+        size
+        standardCost
+        thumbnailBase64Image
+        thumbNailPhoto
+        weight
+    }
+}
+
+query ProductQuery($after: String,$before:String) {
+    products(order: { productId: DESC }, last: 50, after: $after, before: $before) {
+        pageInfo {
+            endCursor
+            hasNextPage
+            hasPreviousPage
+            startCursor
+        }
+        edges {
+            node {
+                thumbnailBase64Image
+                thumbNailPhoto
+                name
+                productId
+            }
+            cursor
+        }
+    }
+}

@@ -1,0 +1,19 @@
+﻿query GetProductsListQuery($after: String,$before:String,$first:Int,$last:Int) {
+    products(order: { productId: DESC }, first: $first,last: $last, after: $after, before: $before) {
+        pageInfo {
+            endCursor
+            hasNextPage
+            hasPreviousPage
+            startCursor
+        }
+        edges {
+            node {
+                thumbnailBase64Image
+                thumbNailPhoto
+                name
+                productId
+            }
+            cursor
+        }
+    }
+}
