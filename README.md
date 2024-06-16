@@ -14,4 +14,6 @@ dotnet tool install StrawberryShake.Tools
 
 Rebuild the project. 
 
+You can use [AdventureWorks database sample](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms) for it. Lightweight version is used for this sample.
+
 ### Full tutorial available in my [Telegram channel](https://t.me/DotNetIsFun) (persian) 
